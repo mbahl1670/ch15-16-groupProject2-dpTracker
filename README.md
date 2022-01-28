@@ -68,7 +68,7 @@ https://github.com/mbahl1670/gp2-dpTracker
 
 
 ## How this was accomplished
-* Decided on what project we would be working on and divied up the workload    
+* Decided on what project we would be working on and divvied up the workload    
   * Michael (API routes, home-routes, JavaScript for comments & voting, Handlebars, assisted with dashboard-routes & integrating login/logout)
   * Chris (Models, Handlebars, Login Page, login javascript, Dashboard & dashboard routes
   * Zeeshan (CSS styling, inital index.html & initial main handlebars page)
@@ -90,7 +90,7 @@ https://github.com/mbahl1670/gp2-dpTracker
 
 ## Directions for Future Development
 * Clean up login/sign-up form & allow users to enter more than 1 dog
-* Enable editing/deltion of a user's profile, votes they have made and comments they have made
+* Enable editing/deletion of a user's profile, votes they have made and comments they have made
 * Allow users to add dog parks to the current list
 * Enable mapping to provide location & directions to a park
 * Allow users to upload pictures of their dogs
