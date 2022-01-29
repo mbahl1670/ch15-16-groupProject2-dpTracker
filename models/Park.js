@@ -13,13 +13,9 @@ class Park extends Model {
         },
         attributes: [
           "id",
+          "park_name",
           "created_at",
-          [
-            sequelize.literal(
-              "(SELECT COUNT(*) FROM vote WHERE park.id = vote.park_id)"
-            ),
-            "vote_count",
-          ],
+          [sequelize.literal("(SELECT COUNT(*) FROM vote WHERE park.id = vote.park_id)"),"vote_count",],
         ],
         include: [
           {
@@ -54,14 +50,7 @@ Park.init(
     park_name: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "user",
-        key: "id",
-      },
-    },
+    }
   },
   {
     sequelize,

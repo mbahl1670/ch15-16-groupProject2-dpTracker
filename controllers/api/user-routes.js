@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Park, Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // GET ALL users route /api/users
 router.get('/', (req,res) => {
@@ -19,7 +20,17 @@ router.get('/:id', (req,res) => {
         attributes: { exclude: ['password'] },
         where: {
             id: req.params.id
-        }
+        },
+        include: [
+            {
+                model: Comment,
+                attributes: ['comment_text', 'created_at'],
+                include: {
+                    model: Park,
+                    attributes: ['park_name']
+                }
+            }
+        ]
     })
     .then(dbUserData => {
         if(!dbUserData) {
@@ -42,7 +53,17 @@ router.post('/', (req,res) => {
         dogname: req.body.dogname,
         dogbreed: req.body.dogbreed
     })
-    .then(dbUserData => res.json(dbUserData))
+    .then(dbUserData => {
+        req.session.save(() => {
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.dogbreed = dbUserData.dogbreed;
+            req.session.dogname = dbUserData.dogname;
+            req.session.loggedIn = true;
+            
+            res.json(dbUserData);
+        });
+    })
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
@@ -61,15 +82,34 @@ router.post('/login', (req, res) => {
             res.status(400).json({ message: 'No user with that email address' });
             return;
         }
-        
+        console.log("we are here", req.body.email)
         const validPassword = dbUserData.checkPassword(req.body.password);
         if (!validPassword) {
             res.status(400).json({ message: 'Incorrect password' });
             return;
         }
 
-        res.json({ user: dbUserData, message: 'You are now logged in!' });
+        req.session.save(() => {
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.dogbreed = dbUserData.dogbreed;
+            req.session.dogname = dbUserData.dogname;
+            req.session.loggedIn = true;
+            console.log("we are here again", dbUserData.id)
+            res.json({ user: dbUserData, message: 'You are now logged in!' });
+        });
+        
     });
+});
+
+router.post('/logout',(req, res) => {
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    } else {
+        res.status(404).end();
+    }
 });
 
 // PUT change User info route /api/users/:id

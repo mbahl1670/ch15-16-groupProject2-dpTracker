@@ -1,0 +1,31 @@
+<a href="/"> &larr; Back to main Page</a>
+<div>
+    <article class="">
+        <div class="">
+            <h2>{{park.park_name}}</h2>
+            <button type="button" class="upvote-btn">Vote for the dog park</button>
+        </div>
+
+        <h3>Comments about the park</h3>
+        <form class="comment-form">
+            <button type="submit">Add Comment</button>
+            <div>
+                <textarea name="comment-text"></textarea>
+            </div>
+        </form>
+        <div class="comments">
+            {{#each park.comments as |single-comment|}}
+            <div class="comment">
+                {{single-comment.comment_text}}
+                :  comment made by {{single-comment.user.username}} on {{moment single-comment.created_at format="MM/DD/YYYY"}}
+            </div>
+            {{/each}}
+        </div>
+    </article>
+
+
+</div>
+
+
+<script src="/javascript/comment.js"></script>
+<script src="/javascript/upvote.js"></script>
