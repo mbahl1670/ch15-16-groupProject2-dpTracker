@@ -1,7 +1,9 @@
-async function addDogPic(event) {
-    event.preventDefault();
+async function addDogPic() {
+    // event.preventDefault();
 
-    const dogBreed = document.querySelector('#dogBreed').innerHTML;
+    const profileBreed = document.querySelector('#dogBreed').innerHTML;
+    const dogBreed = profileBreed.toLowerCase();
+    // console.log(dogBreed.toLowerCase());
 
     var apiCall = "https://dog.ceo/api/breed/" + dogBreed +"/images/random"
     console.log(dogBreed, apiCall);
@@ -15,11 +17,18 @@ async function addDogPic(event) {
             alert('Unable to find a Dog Picutre');
         }
     })
-    .catch(alert('API not working'));
+    // .catch(alert('API not working'));
 }
 
 function showTheDog(data) {
     console.log(data);
+    var newImg = document.createElement("img");
+    newImg.setAttribute("src", data.message);
+    newImg.setAttribute("alt", "owner's dog");
+
+    document.querySelector("#img-target").append(newImg)
 }
 
-document.querySelector('#dogPic').addEventListener('click', addDogPic);
+addDogPic()
+
+// document.querySelector('#dogPic').addEventListener('click', addDogPic);
