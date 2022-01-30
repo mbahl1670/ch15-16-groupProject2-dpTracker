@@ -1,7 +1,9 @@
 async function addDogPic() {
     // event.preventDefault();
 
-    const dogBreed = document.querySelector('#dogBreed').innerHTML;
+    const profileBreed = document.querySelector('#dogBreed').innerHTML;
+    const dogBreed = profileBreed.toLowerCase();
+    // console.log(dogBreed.toLowerCase());
 
     var apiCall = "https://dog.ceo/api/breed/" + dogBreed +"/images/random"
     console.log(dogBreed, apiCall);
