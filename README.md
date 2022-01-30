@@ -17,7 +17,7 @@
 * handelbars.moment
 
 ## Description
-This is a full-stack web application built using javasript, express, sequelize to connect to a SQL database, and the handlebars template engine.  We have created a Dog Park Tracker that will track the popularity of local dog parks to the Minneapolis area.  Currently 10 local dog parks have been selected and are available for valid users to vote on and leave comments about.  Before being able to view a park's comments or vote on a park, a user is required to either sign in or sign up for the app.  When viewing a park you can see what comments the users of the app have made about the park.  A signed-in user can view their dashboard to see what parks they voted on and what parks they have made comments about.
+This is a full-stack web application built using javasript, express, sequelize to connect to a SQL database, and the handlebars template engine.  We have created a Dog Park Tracker that will track the popularity of local dog parks to the Minneapolis area.  Currently 10 local dog parks have been selected and are available for valid users to vote on and leave comments about.  Before being able to view a park's comments or vote on a park, a user is required to either sign in or sign up for the app.  When viewing a park you can see what comments the users of the app have made about the park.  A signed-in user can view their dashboard to see what parks they voted on, what parks they have made comments about and a random picture of the dog's breed.
 
 
 ## Table of Contents
@@ -87,6 +87,7 @@ https://github.com/mbahl1670/gp2-dpTracker
 * Largest challenge (as with any group project) was coordinating meeting times with group members
 * Handlebars in general was fairly new to us, had difficulties importing the correct information
 * Our initial "new technology" was intended to provide a random picture of your dog's breed when a button was clicked.  We were unable to get the API up and running though and the technology was changed
+  * We were able to somewhat get the api call for a dog picture to work, issues arise when the API does not recoginize the dog breed name.
 
 ## Directions for Future Development
 * Clean up login/sign-up form & allow users to enter more than 1 dog
