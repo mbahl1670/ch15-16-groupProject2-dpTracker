@@ -15,6 +15,7 @@
 * express-session
 * connect-session-sequelize
 * handelbars.moment
+* NEW API: https://dog.ceo/dog-api/
 
 ## Description
 This is a full-stack web application built using javasript, express, sequelize to connect to a SQL database, and the handlebars template engine.  We have created a Dog Park Tracker that will track the popularity of local dog parks to the Minneapolis area.  Currently 10 local dog parks have been selected and are available for valid users to vote on and leave comments about.  Before being able to view a park's comments or vote on a park, a user is required to either sign in or sign up for the app.  When viewing a park you can see what comments the users of the app have made about the park.  A signed-in user can view their dashboard to see what parks they voted on, what parks they have made comments about and a random picture of the dog's breed.
